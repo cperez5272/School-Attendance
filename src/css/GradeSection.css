@@ -1,0 +1,20 @@
+.Grade_Name {
+    width: 40%;
+    margin: 3% auto;
+    margin-left: 5%;
+    background-color: blue;
+    color: #fff;
+    padding: 2rem;
+}
+
+.MainButton {
+    display:inline-block;
+    padding:1.3em 4em;
+    margin:0 0.1em 0.1em 0;
+    border:0.16em solid rgba(255,255,255,0);
+    border-radius:2em;
+    background-color: cadetblue;
+}
+    .MainButton:hover {
+        border-color: rgba(255,255,255,1);
+}

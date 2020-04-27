@@ -1,0 +1,29 @@
+form {
+    text-align: left;
+}
+input, textarea {
+    width: 100%;
+    max-width: 350px;
+}
+section {
+    min-height: 200px;
+    padding: 30px 15px;
+    background-color: #bbb;
+}
+section:nth-child(even) {
+    background-color: #ddd;
+}
+.FormButton {
+    display:inline-block;
+    padding:1.3em 4em;
+    margin:0 0.1em 0.1em 0;
+    border:0.16em solid rgba(255,255,255,0);
+    border-radius:2em;
+    background-color: cadetblue;
+}
+.FormButton:hover {
+    border-color: rgba(255,255,255,1);
+}
+.form-section {
+    margin-bottom: 30px;
+}
