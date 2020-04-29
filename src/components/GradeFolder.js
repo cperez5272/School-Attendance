@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/GradeFolder.css'
+import '../css/GradeFolder.css'
 import { Link } from 'react-router-dom'
 
 class GradeFolder extends React.Component {
