@@ -1,8 +1,12 @@
 import React from 'react'
 import './css/StudentForm.css'
+import Context from './Context'
 import { Link } from 'react-router-dom'
 
 class StudentForm extends React.Component {
+
+    static contextType = Context
+
     render() {
         return (
             <>
@@ -25,6 +29,7 @@ class StudentForm extends React.Component {
                 </form>
                 </section>
             </>
+
         )
     }
 }
