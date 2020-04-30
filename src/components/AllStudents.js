@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/AllStudents.css'
+import '../css/AllStudents.css'
 import { Link } from 'react-router-dom'
 
 class AllStudents extends React.Component {

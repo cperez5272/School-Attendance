@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/GradeSection.css'
+import '../css/GradeSection.css'
 import { Link } from 'react-router-dom'
 
 class GradeSection extends React.Component {
