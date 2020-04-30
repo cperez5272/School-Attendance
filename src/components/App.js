@@ -6,22 +6,21 @@ import StudentForm from './StudentForm'
 import AllStudents from './AllStudents'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-class App extends React.Component {
-  render() {
-    return(
-      <Router>
-        <>
-          <Header/>
-          <Switch>
+const App = (props) => {
+  return(
+    <Router>
+      <>
+        <Header/>
+        <Switch>
             <Route path='/' exact component={GradeFolder}/>
             {/* <GradeFolder/> */}
             <Route path='/GradeSection' component={GradeSection}/>
             <Route path='/StudentForm' component={StudentForm}/>
             <Route path='/AllStudents' component={AllStudents}/>
-          </Switch>
-        </>
-      </Router>
-    )
-  }
+        </Switch>
+      </>
+    </Router>
+  )
+
 } 
 export default App;
