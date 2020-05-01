@@ -3,19 +3,30 @@ import '../css/StudentForm.css'
 import { Link } from 'react-router-dom'
 
 class StudentForm extends React.Component {
+    
+    constructor(props) { 
+        super(props)
+  
+        this.state = {
+            firstName: "", 
+            lastName: ""
+        }
+    }
 
-    state = {
-        firstName: "", 
-        lastName: ""
+    showName = () => {
+        console.log(this.state.firstName)
+        console.log(this.state.lastName)
     }
 
     submitHandler = (event) => {
         event.preventDefault(); 
+        console.log('clicked')
         this.addStudent();
     }
 
     changeHandler = (event) => {
         this.setState({[event.target.name]: event.target.value});
+        console.log('I am typing!')
     }
 
     addStudent = async () => {
@@ -53,7 +64,9 @@ class StudentForm extends React.Component {
                     <div className='form-section'>
                         <input type="text" placeholder="Last Name" required onChange={(event) => this.changeHandler(event)} name='lastName'></input>
                     </div>
-                        <button className='FormButton'>Submit</button>
+                        {/* <Link to='/GradeSection'> */}
+                            <button onClick={this.showName} className='FormButton'>Submit</button>
+                        {/* </Link> */}
                 </form>
                 </section>
             </>

@@ -4,13 +4,12 @@ import GradeFolder from './GradeFolder'
 import GradeSection from './GradeSection'
 import StudentForm from './StudentForm'
 import AllStudents from './AllStudents'
-import Context from './Context'
+import Context from '../Context'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 class App extends React.Component {
   render() {
     const value = {
-    students: this.state.students
     }
     return(
       <Context.Provider value= {value}>
