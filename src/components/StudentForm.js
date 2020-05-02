@@ -1,46 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../css/StudentForm.css'
 import { Link } from 'react-router-dom'
 
-class StudentForm extends React.Component {
-    
-    constructor(props) { 
-        super(props)
-  
-        this.state = {
-            firstName: "", 
-            lastName: ""
-        }
-    }
+const StudentForm = (props) => {
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
 
-    showName = () => {
-        console.log(this.state.firstName)
-        console.log(this.state.lastName)
-    }
-
-    submitHandler = (event) => {
-        event.preventDefault(); 
+    const submitHandler = (event) => {
+        event.preventDefault();
         console.log('clicked')
-        this.addStudent();
+        addStudent();
     }
 
-    changeHandler = (event) => {
-        this.setState({[event.target.name]: event.target.value});
-        console.log('I am typing!')
-    }
-
-    addStudent = async () => {
+    const addStudent = async () => {
+        const studentObj = {
+            firstName, //firstName: firstName
+            lastName, //lastName: lastName
+            grade: props.match.params.grade
+        }
         try {
-            if (!this.state.firstName || !this.state.lastName) {
+            if (!firstName || !lastName) {
                 throw 'you cannot leave it blank';
             }
             const response = await fetch(`http://localhost:10001/students`, {
-                method: "POST", 
+                method: "POST",
                 headers: {
-                    "Content-Type": "application/json", 
+                    "Content-Type": "application/json",
                     "Accepts": "application/json"
-                }, 
-                body: JSON.stringify(this.state)
+                },
+                body: JSON.stringify(studentObj)
             });
             const json = await response.json();
         } catch (error) {
@@ -48,30 +36,42 @@ class StudentForm extends React.Component {
         }
     }
 
-    render() {
-        return (
-            <>
-                <Link to='/'>
-                    <button className='FormButton'>Return To Main</button>
-                </Link>
-                <section>
-                <form onSubmit={(event) => this.submitHandler(event)}>
+    useEffect(() => {
+        console.log(props);
+    }, []);
+
+    return (
+        <>
+            <Link to='/'>
+                <button className='FormButton'>Return To Main</button>
+            </Link>
+            <section>
+                <form onSubmit={(event) => { submitHandler(event) }, () => addStudent()}>
                     <label>First Name</label>
                     <div className='form-section'>
-                        <input type="text" placeholder="First Name" required onChange={(event) => this.changeHandler(event)} name='firstName'></input>
+                        <input
+                            type="text"
+                            placeholder="First Name"
+                            required
+                            onChange={(event) => setFirstName(event.target.value)}
+                            name='firstName' />
                     </div>
                     <label>Last Name</label>
                     <div className='form-section'>
-                        <input type="text" placeholder="Last Name" required onChange={(event) => this.changeHandler(event)} name='lastName'></input>
+                        <input
+                            type="text"
+                            placeholder="Last Name"
+                            required
+                            onChange={(event) => setLastName(event.target.value)}
+                            name='lastName' />
                     </div>
-                        {/* <Link to='/GradeSection'> */}
-                            <button onClick={this.showName} className='FormButton'>Submit</button>
-                        {/* </Link> */}
+                    <Link to={`/GradeSection/${props.match.params.grade}`}>
+                        <button className='FormButton'>Submit</button>
+                    </Link>
                 </form>
-                </section>
-            </>
-        )
-    }
+            </section>
+        </>
+    )
 }
 
 export default StudentForm;
