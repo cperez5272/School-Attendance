@@ -4,52 +4,7 @@
       "firstName": "joe ",
       "lastName": "yea ",
       "id": 1
-    },
-    {
-      "firstName": "sae",
-      "lastName": "dae",
-      "id": 2
-    },
-    {
-      "firstName": "last",
-      "lastName": "fast",
-      "id": 3
-    },
-    {
-      "firstName": "joe",
-      "lastName": "shmoe",
-      "grade": "6th",
-      "id": 4
-    },
-    {
-      "firstName": "cesar",
-      "lastName": "perez",
-      "grade": "6th",
-      "id": 5
-    },
-    {
-      "firstName": "ddd",
-      "lastName": "dddd",
-      "grade": "6th",
-      "id": 6
-    },
-    {
-      "firstName": "sand",
-      "lastName": "pan",
-      "grade": "6th",
-      "id": 7
-    },
-    {
-      "firstName": "sando",
-      "lastName": "pando",
-      "grade": "6th",
-      "id": 8
-    },
-    {
-      "firstName": "Kiba",
-      "lastName": "Sunny",
-      "grade": "8th",
-      "id": 9
     }
+    
   ]
 }
