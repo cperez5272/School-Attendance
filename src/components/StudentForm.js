@@ -1,3 +1,4 @@
+import { withRouter } from "react-router";
 import React, { useState, useEffect } from 'react'
 import '../css/StudentForm.css'
 import { Link } from 'react-router-dom'
@@ -68,7 +69,7 @@ const StudentForm = (props) => {
                             name='lastName' />
                     </div>
                     <Link to={`/GradeSection/${props.match.params.grade}`}>
-                        <button className='FormButton'>Submit</button>
+                        <button className='FormButton' {...props.firstName}>Submit</button>
                     </Link>
                 </form>
             </section>
@@ -76,4 +77,4 @@ const StudentForm = (props) => {
     )
 }
 
-export default StudentForm;
+export default withRouter(StudentForm);
