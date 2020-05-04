@@ -9,6 +9,7 @@ const AppProvider = (props) => {
     try {
       const response = await fetch('http://localhost:10001/students');
       const json = await response.json(); 
+      console.log(json);
       setStudents(json);
     } catch (error) {
       console.log(error);
