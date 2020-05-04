@@ -1,31 +1,38 @@
-import React, { useState, useContext } from 'react'
+import { withRouter } from "react-router";
+import React, { useState, useEffect } from 'react'
 import '../css/StudentForm.css'
 import { Link } from 'react-router-dom'
 import AppContext from '../context/AppContext';
 
 const StudentForm = (props) => {
-
-    const [ firstName, setFirstName ] = useState('');
-    const [ lastName, setLastName ] = useState('');
-    const { addStudentCtx, students } = useContext(AppContext);
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
 
     const submitHandler = (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
+        console.log('clicked')
         addStudent();
     }
 
     const addStudent = async () => {
+        //get route parameters, add to the student object being passed in body
+        //students should not be able to be added
+        const studentObj = {
+            firstName, //firstName: firstName
+            lastName, //lastName: lastName
+            grade: props.match.params.grade
+        }
         try {
             if (!firstName || !lastName) {
-                throw new Error('please try again');
+                throw 'you cannot leave it blank';
             }
             const response = await fetch(`http://localhost:10001/students`, {
-                method: "POST", 
+                method: "POST",
                 headers: {
-                    "Content-Type": "application/json", 
+                    "Content-Type": "application/json",
                     "Accepts": "application/json"
-                }, 
-                body: JSON.stringify({firstName, lastName})
+                },
+                body: JSON.stringify(studentObj)
             });
             const json = await response.json();
             addStudentCtx(json);
@@ -35,38 +42,42 @@ const StudentForm = (props) => {
         }
     }
 
+    useEffect(() => {
+        console.log(props);
+    }, []);
+
     return (
         <>
             <Link to='/'>
                 <button className='FormButton'>Return To Main</button>
             </Link>
             <section>
-                <form onSubmit={(event) => submitHandler(event)}>
+                <form onSubmit={(event) => { submitHandler(event) }, () => addStudent()}>
                     <label>First Name</label>
                     <div className='form-section'>
-                        <input 
-                            type="text" 
-                            placeholder="First Name" 
-                            required 
-                            onChange={(event) => setFirstName(event.target.value)} 
-                            name='firstName'
-                        />
+                        <input
+                            type="text"
+                            placeholder="First Name"
+                            required
+                            onChange={(event) => setFirstName(event.target.value)}
+                            name='firstName' />
                     </div>
                     <label>Last Name</label>
                     <div className='form-section'>
-                        <input 
-                            type="text" 
-                            placeholder="Last Name" 
-                            required 
-                            onChange={(event) => setLastName(event.target.value)} 
-                            name='lastName'
-                        />
+                        <input
+                            type="text"
+                            placeholder="Last Name"
+                            required
+                            onChange={(event) => setLastName(event.target.value)}
+                            name='lastName' />
                     </div>
-                        <button className='FormButton'>Submit</button>
+                    <Link to={`/GradeSection/${props.match.params.grade}`}>
+                        <button className='FormButton' {...props.firstName}>Submit</button>
+                    </Link>
                 </form>
             </section>
         </>
     )
 }
 
-export default StudentForm;
+export default withRouter(StudentForm);
