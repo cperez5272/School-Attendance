@@ -69,7 +69,7 @@ const StudentForm = (props) => {
                             name='lastName' />
                     </div>
                     <Link to={`/GradeSection/${props.match.params.grade}`}>
-                        <button className='FormButton' {...props.firstName}>Submit</button>
+                        <button className='FormButton'>Submit</button>
                     </Link>
                 </form>
             </section>
