@@ -1,15 +1,17 @@
+import React, { useState, useEffect, useContext } from 'react'
 import { withRouter } from "react-router";
-import React, { useState, useEffect } from 'react'
 import '../css/StudentForm.css'
 import { Link } from 'react-router-dom'
+import AppContext from '../context/AppContext';
 
 const StudentForm = (props) => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
+    const { addStudentCtx, students } = useContext(AppContext);
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log('clicked')
+        console.log('clicked');
         addStudent();
     }
 
@@ -33,7 +35,13 @@ const StudentForm = (props) => {
                 },
                 body: JSON.stringify(studentObj)
             });
-            const json = await response.json();
+            if (response.status === 201) {
+                const json = await response.json();
+                addStudentCtx(json);
+                return props.history.push("/");
+            } else {
+                console.log(response.status);
+            }
         } catch (error) {
             console.log(error)
         }
@@ -49,7 +57,7 @@ const StudentForm = (props) => {
                 <button className='FormButton'>Return To Main</button>
             </Link>
             <section>
-                <form onSubmit={(event) => { submitHandler(event) }, () => addStudent()}>
+                <form onSubmit={(event) => submitHandler(event)}>
                     <label>First Name</label>
                     <div className='form-section'>
                         <input
@@ -68,9 +76,7 @@ const StudentForm = (props) => {
                             onChange={(event) => setLastName(event.target.value)}
                             name='lastName' />
                     </div>
-                    <Link to={`/GradeSection/${props.match.params.grade}`}>
-                        <button className='FormButton'>Submit</button>
-                    </Link>
+                    <button className='FormButton'>Submit</button>
                 </form>
             </section>
         </>

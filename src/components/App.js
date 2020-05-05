@@ -4,15 +4,13 @@ import GradeFolder from './GradeFolder'
 import GradeSection from './GradeSection'
 import StudentForm from './StudentForm'
 import AllStudents from './AllStudents'
-import Context from '../Context'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import AppContext from '../context/AppContext';
+import '../index.css';
 
 class App extends React.Component {
   render() {
-    const value = {
-    }
     return(
-      <Context.Provider value= {value}>
       <Router>
         <>
           <Header/>
@@ -26,7 +24,6 @@ class App extends React.Component {
           </Switch>
         </>
       </Router>
-      </Context.Provider>
     )
   }
 } 
