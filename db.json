@@ -1,33 +1,32 @@
 {
   "students": [
     {
-      "firstName": "joe ",
-      "lastName": "yea ",
+      "firstName": "This",
+      "lastName": "sucks",
+      "grade": "7th",
       "id": 1
     },
     {
-      "firstName": "joe",
-      "lastName": "comeon",
+      "firstName": "because",
+      "lastName": "the fu",
       "grade": "7th",
       "id": 2
     },
     {
-      "firstName": "cesar",
-      "lastName": "alejandro",
+      "firstName": "mentor",
+      "lastName": "dunno",
       "grade": "7th",
       "id": 3
     },
     {
-      "firstName": "joe",
-      "lastName": "lameo",
-      "grade": "6th",
-      "id": 4
+      "firstName": "cesar ",
+      "lastName": "Deaya ",
+      "id": 5
     },
     {
-      "firstName": "stop",
-      "lastName": "joe",
-      "grade": "8th",
-      "id": 5
+      "firstName": "cesar ",
+      "lastName": "doa ",
+      "id": 7
     }
   ]
 }
