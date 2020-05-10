@@ -7,7 +7,7 @@ const AppProvider = (props) => {
 
   const fetchStudents = async () => {
     try {
-      const response = await fetch('http://localhost:10001/students');
+      const response = await fetch(`${process.env.REACT_APP_NOTEFUL_API}/students`);
       const json = await response.json(); 
       console.log(json);
       setStudents(json);
