@@ -27,11 +27,12 @@ const StudentForm = (props) => {
             if (!firstName || !lastName) {
                 throw 'you cannot leave it blank';
             }
+            console.log(studentObj)
             const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/api/students`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Accepts": "application/json"
+                    "Accept": "application/json"
                 },
                 body: JSON.stringify(studentObj)
             });
