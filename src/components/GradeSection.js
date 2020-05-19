@@ -14,7 +14,7 @@ const GradeSection = (props) => {
         if (loaded) return;
         const filterStudentsByGrade = () => {
             const gradeRoute = parseInt(props.match.params.grade);
-            const filteredStudents = students.filter(student => student.grade === gradeRoute);
+            const filteredStudents = students.filter(student => student.grade == gradeRoute);
             setGradeStudents(filteredStudents);
             console.log(filteredStudents, "FILTERED")
         }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import AppContext from '../context/AppContext';
 
 const StudentForm = (props) => {
-    const [firstName, setFirstName] = useState('')
+    const [firstName, setfirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const { addStudentCtx, students } = useContext(AppContext);
 
@@ -36,7 +36,7 @@ const StudentForm = (props) => {
                 },
                 body: JSON.stringify(studentObj)
             });
-            if (response.status === 201) {
+            if (response.status === 200) {
                 const json = await response.json();
                 addStudentCtx(json);
                 return props.history.push("/");
@@ -65,7 +65,7 @@ const StudentForm = (props) => {
                             type="text"
                             placeholder="First Name"
                             required
-                            onChange={(event) => setFirstName(event.target.value)}
+                            onChange={(event) => setfirstName(event.target.value)}
                             name='firstName' />
                     </div>
                     <label>Last Name</label>
