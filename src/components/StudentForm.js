@@ -21,14 +21,14 @@ const StudentForm = (props) => {
         const studentObj = {
             firstName, //firstName: firstName
             lastName, //lastName: lastName
-            grade: props.match.params.grade
+            grade: props.match.params.grade.substring(0,1)
         }
         try {
             if (!firstName || !lastName) {
                 throw 'you cannot leave it blank';
             }
             console.log(studentObj)
-            const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/api/students`, {
+            const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/students`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

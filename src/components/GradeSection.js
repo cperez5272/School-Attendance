@@ -10,21 +10,19 @@ const GradeSection = (props) => {
     const [ gradeStudents, setGradeStudents ] = useState([]);
     const [ loaded, setLoaded ] = useState(false); 
 
-    console.log(students, gradeStudents);
-
     useEffect(() => {
-
-        if (gradeStudents.length > 0) return;
+        if (loaded) return;
         const filterStudentsByGrade = () => {
-            const gradeRoute = props.match.params.grade;
+            const gradeRoute = parseInt(props.match.params.grade);
             const filteredStudents = students.filter(student => student.grade === gradeRoute);
             setGradeStudents(filteredStudents);
+            console.log(filteredStudents, "FILTERED")
+        }
+        filterStudentsByGrade();
+        if (students[0]) {
             setLoaded(true);
         }
-
-        filterStudentsByGrade();
-
-    }, [loaded])
+    }, [loaded, gradeStudents])
 
     const renderStudents = () => {
         return gradeStudents.map(student => {

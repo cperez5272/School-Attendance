@@ -7,9 +7,9 @@ const AppProvider = (props) => {
 
   const fetchStudents = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/api/students`);
+      const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/students`);
       const json = await response.json(); 
-      console.log(json);
+      console.log('JSON FROM FETCHSTUDENTS', json);
       setStudents(json);
     } catch (error) {
       console.log(error);
@@ -21,8 +21,11 @@ const AppProvider = (props) => {
   }
 
   useEffect(() => {
+    if (students[0]) {
+      if (students[0].firstName) return;
+    }
     fetchStudents(); 
-  }, []);
+  }, [students]);
 
   return (
     <AppContext.Provider value={{

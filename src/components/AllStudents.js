@@ -6,12 +6,10 @@ import AppContext from '../context/AppContext';
 const AllStudents = (props) => {
 
     const { students } = useContext(AppContext);
-    const [loaded, setLoaded ] = useState(false);
     const [ allStudents, setAllStudents ] = useState([]);
 
     useEffect(() => {
         setAllStudents(students);
-        setLoaded(true);
     });
 
     const renderStudents = () => {
