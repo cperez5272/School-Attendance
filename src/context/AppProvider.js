@@ -17,9 +17,12 @@ const AppProvider = (props) => {
   } 
 
   const addStudentCtx = (newStudent) => {
+    console.log("Adding student...");
+    console.log(newStudent);
+    console.dir(newStudent);
     setStudents([...students, newStudent]);
   }
-  console.log('HELLLLLLOOOOO')
+  console.log('HELLLLLLOOOOO :O')
   console.log(addStudentCtx)
 
   useEffect(() => {
