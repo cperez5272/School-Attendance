@@ -20,6 +20,7 @@ const AppProvider = (props) => {
     console.log("Adding student...");
     console.log(newStudent);
     console.dir(newStudent);
+    console.log(students)
     setStudents([...students, newStudent]);
   }
   console.log('HELLLLLLOOOOO :O')
