@@ -16,12 +16,23 @@ const AllStudents = (props) => {
         return allStudents.map(student => <h3 className="student-card" key={student.id}> {`${student.firstName} ${student.lastName}`} </h3>)
     }
 
+    const clearAttendance = async () => {
+        console.log('clicked')
+        console.log(allStudents)
+        const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/students`);
+        const json = await response.json(); 
+        setAllStudents(json)
+        console.log(json)
+        // console.log(students)
+        // setAllStudents(allStudents.filter(item => item.name !== name));
+    }
+
     return(
         <>
             <Link to='/'>
                 <button className='MainButton'>Return To Main</button>
             </Link>
-            <button className='MainButton'>Clear Attendance</button>
+            <button onClick= {clearAttendance} className='MainButton'>Clear Attendance </button>
             {renderStudents()}
         </>
     )

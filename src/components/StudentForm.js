@@ -37,7 +37,7 @@ const StudentForm = (props) => {
                 body: JSON.stringify(studentObj)
             });
             if (response.status === 200) {
-                const json = await response.json();
+                const json =  response.json();
                 addStudentCtx(json);
                 return props.history.push("/");
             } else {
