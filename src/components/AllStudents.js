@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
 import '../css/AllStudents.css'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import AppContext from '../context/AppContext';
 
 const AllStudents = (props) => {
 
-    const { students } = useContext(AppContext);
+    const { students, removeStudentsCtx } = useContext(AppContext);
     const [ allStudents, setAllStudents ] = useState([]);
 
     useEffect(() => {
@@ -18,12 +18,20 @@ const AllStudents = (props) => {
 
     const clearAttendance = async () => {
         console.log('clicked')
-        console.log(allStudents)
-        const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/remove-students`);
+        const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/remove-students`, {
+            method: "DELETE", 
+            cors: "no-cors",
+            headers: {
+                "Content-type": "application/json", 
+                "Accepts": "application/json"
+            }
+        });
         const json = await response.json(); 
+        if (json.status === 204) {
+            removeStudentsCtx();
+            props.history.push("/");
+        }
         console.log(json)
-        // console.log(students)
-        // setAllStudents(allStudents.filter(item => item.name !== name));
     }
 
     return(
@@ -38,4 +46,4 @@ const AllStudents = (props) => {
     
 }
 
-export default AllStudents;
+export default withRouter(AllStudents);

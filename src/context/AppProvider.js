@@ -17,11 +17,13 @@ const AppProvider = (props) => {
   } 
 
   const addStudentCtx = (newStudent) => {
-    console.log("Adding student...");
-    console.log(newStudent);
     console.dir(newStudent);
     console.log(students)
     setStudents([...students, newStudent]);
+  }
+
+  const removeStudentsCtx = () => {
+    setStudents([]);
   }
 
   useEffect(() => {
@@ -36,7 +38,8 @@ const AppProvider = (props) => {
   return (
     <AppContext.Provider value={{
       students, 
-      addStudentCtx
+      addStudentCtx, 
+      removeStudentsCtx
     }}>
       { children }
     </AppContext.Provider>
