@@ -19,9 +19,8 @@ const AllStudents = (props) => {
     const clearAttendance = async () => {
         console.log('clicked')
         console.log(allStudents)
-        const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/students`);
+        const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/remove-students`);
         const json = await response.json(); 
-        setAllStudents(json)
         console.log(json)
         // console.log(students)
         // setAllStudents(allStudents.filter(item => item.name !== name));

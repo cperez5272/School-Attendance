@@ -7,7 +7,7 @@ import AppContext from '../context/AppContext';
 const GradeSection = (props) => {
 
     const { students } = useContext(AppContext);
-    const [ gradeStudents, setGradeStudents ] = useState([]);
+    const [ gradeStudents, setGradeStudents ] = useState(null);
     const [ loaded, setLoaded ] = useState(false); 
 
     useEffect(() => {
@@ -16,12 +16,13 @@ const GradeSection = (props) => {
             const gradeRoute = parseInt(props.match.params.grade);
             const filteredStudents = students.filter(student => student.grade == gradeRoute);
             setGradeStudents(filteredStudents);
-            console.log(filteredStudents, "FILTERED")
+            console.log(filteredStudents, "FILTERED");
         }
         filterStudentsByGrade();
-        if (students[0]) {
+        if (gradeStudents) {
             setLoaded(true);
         }
+
     }, [loaded, gradeStudents])
 
     const renderStudents = () => {
@@ -31,6 +32,7 @@ const GradeSection = (props) => {
         })
     }
 
+    if (!gradeStudents) return <> </>
     return (
         <> 
             <Link to='/'>
