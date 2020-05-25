@@ -18,10 +18,10 @@ const GradeSection = (props) => {
             setGradeStudents(filteredStudents);
             console.log(filteredStudents, "FILTERED")
         }
-        // filterStudentsByGrade();
-    //     if (students[0]) {
-    //         setLoaded(true);
-    //     }
+        filterStudentsByGrade();
+        if (students[0]) {
+            setLoaded(true);
+        }
     }, [loaded, gradeStudents])
 
     const renderStudents = () => {
