@@ -1,3 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans",
+    sans-serif; 
+    font-size: 20px;
+    color: #444;
+    text-align: center;
+    line-height: 1.5;
+}
+
 .Grade_Name {
     width: 40%;
     margin: 3% auto;
@@ -18,3 +31,4 @@
     .MainButton:hover {
         border-color: rgba(255,255,255,1);
 }
+

@@ -6,9 +6,11 @@ input, textarea {
     max-width: 350px;
 }
 section {
+    width: 95%;
     min-height: 200px;
     padding: 30px 15px;
     background-color: #bbb;
+    margin: 0 auto;
 }
 section:nth-child(even) {
     background-color: #ddd;

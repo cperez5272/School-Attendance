@@ -16,11 +16,9 @@ const StudentForm = (props) => {
     }
 
     const addStudent = async () => {
-        //get route parameters, add to the student object being passed in body
-        //students should not be able to be added
         const studentObj = {
-            firstName, //firstName: firstName
-            lastName, //lastName: lastName
+            firstName, 
+            lastName, 
             grade: props.match.params.grade.substring(0,1)
         }
         try {

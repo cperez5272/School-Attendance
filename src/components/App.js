@@ -16,7 +16,6 @@ class App extends React.Component {
           <Header/>
           <Switch>
             <Route path='/' exact component={GradeFolder}/>
-            {/* <GradeFolder/> */}
             <Route path='/GradeSection/:grade' component={GradeSection}/>
             <Route path='/StudentForm/:grade' component={StudentForm}/>
             <Route path='/StudentForm' component={StudentForm}/>
