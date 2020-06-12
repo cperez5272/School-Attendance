@@ -3,8 +3,9 @@ import AppContext from './AppContext';
 
 const AppProvider = (props) => {
   const { children } = props; 
-  const [ students, setStudents ] = useState([]);
-  const [ loaded, setLoaded ] = useState(false)
+  const [ students, setStudents ] = useState(null);
+  const [ loaded, setLoaded ] = useState(false); 
+
   const fetchStudents = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/students`);
@@ -27,13 +28,9 @@ const AppProvider = (props) => {
   }
 
   useEffect(() => {
-    if (loaded) return
-    if (students[0]) {
-      if (students[0].firstName) return;
-    }
+    if (students) return;
     fetchStudents(); 
-    setLoaded(true)
-  }, [loaded, students]);
+  }, [students]);
 
   return (
     <AppContext.Provider value={{

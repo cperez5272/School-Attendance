@@ -13,7 +13,7 @@ const AllStudents = (props) => {
     });
 
     const renderStudents = () => {
-        return allStudents.map(student => <h3 className="student-card" key={student.id}> {`${student.firstName} ${student.lastName}`} </h3>)
+        return allStudents.map(student => <h3 className="student-card" key={student.id}> {`${student.firstname} ${student.lastname}`} </h3>)
     }
 
     const clearAttendance = async () => {

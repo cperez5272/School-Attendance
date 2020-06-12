@@ -14,21 +14,28 @@ const GradeSection = (props) => {
         if (loaded) return;
         const filterStudentsByGrade = () => {
             const gradeRoute = parseInt(props.match.params.grade);
-            const filteredStudents = students.filter(student => student.grade == gradeRoute);
-            setGradeStudents(filteredStudents);
+            let filteredStudents;
+            if (students) {
+                filteredStudents = students.filter(student => student.grade == gradeRoute);
+                setGradeStudents(filteredStudents);
+            } 
             console.log(filteredStudents, "FILTERED");
         }
         filterStudentsByGrade();
-        if (gradeStudents) {
+        if (students) {
             setLoaded(true);
         }
-
-    }, [loaded, gradeStudents])
+    }, [gradeStudents, students])
 
     const renderStudents = () => {
         return gradeStudents.map(student => {
             console.log(student);
-            return <h3 className="student-card" key={student.id}> {`${student.firstName} ${student.lastName}`} </h3>
+            return (
+                <h3 className="student-card" key={student.id}> 
+                    {`${student.firstname} ${student.lastname}`} 
+                </h3>
+
+            )
         })
     }
 
@@ -47,4 +54,3 @@ const GradeSection = (props) => {
 }
 
 export default GradeSection;
-
