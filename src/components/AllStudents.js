@@ -10,14 +10,14 @@ const AllStudents = (props) => {
 
     useEffect(() => {
         setAllStudents(students);
-    });
+    }, [students])
 
     const renderStudents = () => {
+        if (!allStudents) return
         return allStudents.map(student => <h3 className="student-card" key={student.id}> {`${student.firstname} ${student.lastname}`} </h3>)
     }
 
     const clearAttendance = async () => {
-        console.log('clicked')
         const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/remove-students`, {
             method: "DELETE", 
             cors: "no-cors",
@@ -31,7 +31,6 @@ const AllStudents = (props) => {
             removeStudentsCtx();
             props.history.push("/");
         }
-        console.log(json)
     }
 
     return(

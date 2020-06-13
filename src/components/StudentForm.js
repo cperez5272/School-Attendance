@@ -11,7 +11,6 @@ const StudentForm = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log('clicked');
         addStudent();
     }
 
@@ -25,7 +24,6 @@ const StudentForm = (props) => {
             if (!firstName || !lastName) {
                 throw 'you cannot leave it blank';
             }
-            console.log(studentObj)
             const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/students`, {
                 method: "POST",
                 headers: {
@@ -39,15 +37,12 @@ const StudentForm = (props) => {
                 addStudentCtx(json);
                 return props.history.push("/");
             } else {
-                console.log(response.status);
             }
         } catch (error) {
-            console.log(error)
         }
     }
 
     useEffect(() => {
-        console.log(props);
     }, []);
 
     return (

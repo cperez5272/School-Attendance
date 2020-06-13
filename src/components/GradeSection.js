@@ -19,7 +19,6 @@ const GradeSection = (props) => {
                 filteredStudents = students.filter(student => student.grade == gradeRoute);
                 setGradeStudents(filteredStudents);
             } 
-            console.log(filteredStudents, "FILTERED");
         }
         filterStudentsByGrade();
         if (students) {
@@ -29,7 +28,6 @@ const GradeSection = (props) => {
 
     const renderStudents = () => {
         return gradeStudents.map(student => {
-            console.log(student);
             return (
                 <h3 className="student-card" key={student.id}> 
                     {`${student.firstname} ${student.lastname}`} 

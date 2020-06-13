@@ -10,16 +10,13 @@ const AppProvider = (props) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/students`);
       const json = await response.json(); 
-      console.log('JSON FROM FETCHSTUDENTS', json);
       setStudents(json);
     } catch (error) {
-      console.log(error);
     }
   } 
 
   const addStudentCtx = (newStudent) => {
     console.dir(newStudent);
-    console.log(students)
     setStudents([...students, newStudent]);
   }
 
