@@ -1,31 +1,31 @@
 {
   "students": [
     {
-      "firstName": "This",
-      "lastName": "sucks",
+      "first_name": "This",
+      "last_name": "sucks",
       "grade": "7th",
       "id": 1
     },
     {
-      "firstName": "because",
-      "lastName": "the fu",
+      "first_name": "because",
+      "last_name": "the fu",
       "grade": "7th",
       "id": 2
     },
     {
-      "firstName": "mentor",
-      "lastName": "dunno",
+      "first_name": "mentor",
+      "last_name": "dunno",
       "grade": "7th",
       "id": 3
     },
     {
-      "firstName": "cesar ",
-      "lastName": "Deaya ",
+      "first_name": "cesar ",
+      "last_name": "Deaya ",
       "id": 5
     },
     {
-      "firstName": "cesar ",
-      "lastName": "doa ",
+      "first_name": "cesar ",
+      "last_name": "doa ",
       "id": 7
     }
   ]

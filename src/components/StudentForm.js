@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import AppContext from '../context/AppContext';
 
 const StudentForm = (props) => {
-    const [firstName, setfirstName] = useState('')
-    const [lastName, setLastName] = useState('')
+    const [first_name, setfirst_name] = useState('')
+    const [last_name, setlast_name] = useState('')
     const { addStudentCtx, students } = useContext(AppContext);
 
     const submitHandler = (event) => {
@@ -16,12 +16,12 @@ const StudentForm = (props) => {
 
     const addStudent = async () => {
         const studentObj = {
-            firstName, 
-            lastName, 
+            first_name, 
+            last_name, 
             grade: props.match.params.grade.substring(0,1)
         }
         try {
-            if (!firstName || !lastName) {
+            if (!first_name || !last_name) {
                 throw 'you cannot leave it blank';
             }
             const response = await fetch(`${process.env.REACT_APP_ATTENDANCE_API}/students`, {
@@ -58,8 +58,8 @@ const StudentForm = (props) => {
                             type="text"
                             placeholder="First Name"
                             required
-                            onChange={(event) => setfirstName(event.target.value)}
-                            name='firstName' />
+                            onChange={(event) => setfirst_name(event.target.value)}
+                            name='first_name' />
                     </div>
                     <label>Last Name</label>
                     <div className='form-section'>
@@ -67,8 +67,8 @@ const StudentForm = (props) => {
                             type="text"
                             placeholder="Last Name"
                             required
-                            onChange={(event) => setLastName(event.target.value)}
-                            name='lastName' />
+                            onChange={(event) => setlast_name(event.target.value)}
+                            name='last_name' />
                     </div>
                     <button className='FormButton'>Submit</button>
                 </form>

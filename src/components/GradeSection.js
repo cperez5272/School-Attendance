@@ -10,6 +10,8 @@ const GradeSection = (props) => {
     const [ gradeStudents, setGradeStudents ] = useState(null);
     const [ loaded, setLoaded ] = useState(false); 
 
+    console.log(students)
+
     useEffect(() => {
         if (loaded) return;
         const filterStudentsByGrade = () => {
@@ -30,7 +32,7 @@ const GradeSection = (props) => {
         return gradeStudents.map(student => {
             return (
                 <h3 className="student-card" key={student.id}> 
-                    {`${student.firstname} ${student.lastname}`} 
+                    {`${student.first_name} ${student.last_name}`} 
                 </h3>
 
             )
