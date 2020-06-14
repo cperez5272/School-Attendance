@@ -10,8 +10,6 @@ const GradeSection = (props) => {
     const [ gradeStudents, setGradeStudents ] = useState(null);
     const [ loaded, setLoaded ] = useState(false); 
 
-    console.log(students)
-
     useEffect(() => {
         if (loaded) return;
         const filterStudentsByGrade = () => {
